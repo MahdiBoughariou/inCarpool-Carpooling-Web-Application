@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <link  rel="stylesheet" href="/css/styleR.css">
+	    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+	    <title>Edit</title>
+	    
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	    <!--fonction ajax qui vérifie l'existance de username & email sans réfréchir la page-->
+		<script>
+			$(document).ready(function() {
+				// Lorsque l'utilisateur quitte le champ email
+				$('#email').on('blur', function() {
+					var email = $(this).val();  // Récupère la valeur du champ email
+
+					// Effectuer la requête AJAX pour vérifier la disponibilité de l'email
+					$.ajax({
+						type: 'GET',
+						url: '/registration/CheckEmailAvailability',  // URL du contrôleur pour vérifier la disponibilité
+						data: {'email': email},  // Envoie l'email à vérifier
+						success: function(response) {
+							// Afficher le message en fonction de la réponse
+							if (response === "Email available.") {
+								$('#email-message').text(response).css('color', 'green');  // Email disponible
+							} else {
+								$('#email-message').text(response).css('color', 'red');  // Email déjà utilisé
+							}
+						},
+						error: function() {
+							$('#email-message').text('Erreur de vérification').css('color', 'red');
+						}
+					});
+				});
+			});
+		</script>
+
+		<script>
+			$(document).ready(function() {
+				// Lorsque l'utilisateur quitte le champ username
+				$('#username').on('blur', function() {
+					var username = $(this).val();  // Récupère la valeur du champ username
+
+					// Effectuer la requête AJAX pour vérifier la disponibilité du username
+					$.ajax({
+						type: 'GET',
+						url: '/registration/CheckUsernameAvailability',  // URL du contrôleur pour vérifier la disponibilité
+						data: {'username': username},  // Envoie le nom d'utilisateur à vérifier
+						success: function(response) {
+							// Afficher le message en fonction de la réponse
+							if (response === "Username available.") {
+								$('#username-message').text(response).css('color', 'green');  // Nom disponible
+							} else {
+								$('#username-message').text(response).css('color', 'red');  // Nom déjà pris
+							}
+						},
+						error: function() {
+							$('#username-message').text('Erreur de vérification').css('color', 'red');
+						}
+					});
+				});
+			});
+		</script>
+
+	</head>
+	
+	<body>
+	    <div class="container">
+	        <header> Edit</header>
+	        <form action="/editprofile/update" method="post">
+	            <div class="form first">
+	                <div class="details personal">
+	                    <span class="title">Personal Details</span>
+	                    <div class="fields">
+	                        <div class="input-fields">
+	                            <label>First Name</label>
+	                            <input type="text" id="firstname" name="firstname" placeholder="Enter your First Name" th:value="${user.firstname}">
+	                        </div>
+	                        <div class="input-fields">
+	                            <label>Last Name</label>
+	                            <input type="text" id="lastname" name="lastname" placeholder="Enter your Last Name" th:value="${user.lastname}">
+	                        </div>
+	                        <div class="input-fields">
+	                            <label>Identity Card Number</label>
+	                            <input type="text" id="cin" name="cin" placeholder="Enter your ID Card Number" th:value="${user.cin}">
+								<div style="color: red;">
+									<p th:text="${cinError}"></p>
+								</div>
+	                        </div>
+	                        <div class="input-fields">
+	                            <label>E-mail</label>
+	                            <input  type="text" id="email" name="email" placeholder="Enter your Email" th:value="${user.email}">
+								<div style="color: red;">
+									<p th:text="${emailError}"></p>
+								</div>
+								<span id="email-message"></span> <!-- pour afficher les messages de disponibilité -->
+	                        </div>
+	                        
+	                        <div class="input-fields">
+	                            <label>Birthday Date</label>
+	                            <input type="date" id="birthdate" name="birthdate" placeholder="Enter your Birthday Date" th:value="${user.birthdate}">
+	                        </div>
+	                        
+	                        <div class="input-fields">
+	                            <label>Mobile Number</label>
+	                            <input type="text" id="phone" name="phone" placeholder="Enter your mobile number" th:value="${user.phone}">
+								<div style="color: red;">
+									<p th:text="${phoneError}"></p>
+								</div>
+	                        </div>		
+	                    </div> 
+	                    
+	                    <div class="details keys">
+		                    <span class="title">Personal keys</span>
+		                    <div class="fields">
+		                        <div class="input-fields">
+		                            <label>USERNAME</label>
+		                            <input type="text" id="username" name="username" placeholder="Enter your USERNAME" th:value="${user.username}">
+									<span id="username-message"></span> <!-- pour afficher les messages de disponibilité -->
+		                        </div>
+		                        
+		                        <div class="input-fields">
+		                            <label>OLD PASSWORD</label>
+		                            <input type="password" id="password" name="password" placeholder="Enter your old PASSWORD">
+		                            <span id="password-message"></span> <!-- pour afficher les messages  -->
+									<!-- Affichage des erreurs -->
+									<div style="color: red;">
+										<p th:text="${passwordError}"></p>
+									</div>
+		                        </div>
+		                        
+		                        <div class="input-fields">
+		                            <label>NEW Password</label>
+		                            <input  type="password" id="password2" name="password2" placeholder="Repeat your new Password">
+									<div style="color: red;">
+										<p th:text="${newPasswordError}"></p>
+									</div>
+		                        </div>
+
+	                        </div>
+
+							<!-- Affichage des erreurs -->
+							<div style="color: red;">
+								<p th:text="${nullError}"></p>
+							</div>
+
+	                        <input type="hidden" id="id" name="id" >
+                     	                        
+	                        <button class="nextbtn" >	
+	                            	<span class="btntext">Modify</span>
+	                        </button>
+	                    
+	                </div>
+	            </div>
+	        </form> 
+	    </div>
+	</body>
+	
+</html>

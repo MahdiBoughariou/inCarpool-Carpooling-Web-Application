@@ -1,0 +1,187 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+
+	min-height: 100vh;
+	font-family: Montserrat;
+
+}
+
+/**/
+nav {
+	width: 100%;
+	height: auto;
+	display: flex;
+	position: relative;
+	align-items: center;
+
+	margin-top: 10px;
+
+}
+
+.logo {
+	padding-left: 10px;
+}
+
+nav .imglogo {
+	width: 19%;
+}
+
+nav span {
+	position: relative;
+	bottom: 30px;
+	font-size: 22px;
+	font-weight: 700;
+	color: #25294A;
+}
+
+/**/
+section {
+	width: 100%;
+	height: 80vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding-bottom: 5%;
+
+}
+
+section h1 {
+	font-size: 35px;
+	color: rgb(81, 69, 69);
+	font-weight: bold;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	user-select: none;
+}
+
+.comment {
+	width: 20em;
+	height: 25px;
+	background-color: #95d1e5;
+	font-size: 19px;
+	font-weight: 500;
+	border-radius: 5px;
+	padding-left: 1%;
+	margin-bottom: 1%;
+}
+
+.minus,
+.plus {
+	width: 100px;
+	height: 100px;
+	background: #fff;
+	border: 1px solid #DDD;
+	border-radius: 15px;
+	cursor: pointer;
+
+	color: #25294A;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.num {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 200px;
+	width: 250px;
+	margin: 0 10px;
+	background: #fff;
+
+	border-radius: 15px;
+	font-size: 50px;
+	color: #000;
+	font-weight: bold;
+}
+
+.minus span {
+	display: flex;
+	width: 40px;
+	height: 5px;
+	background: #25294A;
+}
+
+.plus span:nth-child(1) {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	width: 40px;
+	height: 5px;
+	background: #25294A;
+}
+
+.plus span:nth-child(2) {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	width: 5px;
+	height: 40px;
+	background: #25294A;
+}
+
+.boutons {
+	display: flex;
+	align-items: center;
+	max-width: 100%;
+	justify-content: space-between;
+}
+
+.bouton,
+.boutonR {
+	height: 45px;
+
+}
+
+.nextbtn,
+.backbtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	width: 300px;
+	border: none;
+	outline: none;
+	color: white;
+	border-radius: 15px;
+	margin: 40px 20px;
+	background-color: #25294A;
+	transition: all 0.3s linear;
+	cursor: pointer;
+
+}
+
+.boutonR a {
+	color: aliceblue;
+	text-decoration: none;
+}
+
+.bouton a {
+	color: aliceblue;
+	text-decoration: none;
+}
+
+.bouton:hover {
+	transform: scale(1.1);
+}
+
+.boutonR:hover {
+	transform: scale(1.1);
+}

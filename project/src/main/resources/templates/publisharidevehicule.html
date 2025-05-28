@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styleridevehicule.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styleaddvehiculeserie.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>Vehicle</title>
+    <style>
+        .alert-danger {
+            text-align: center; /* Center align the text */
+            width: 70%; /* Set width */
+            margin: 6% auto; /* Center vertically and horizontally */
+            padding: 10px 20px; /* Adjust padding */
+        }
+        .novehicle {
+            width: 70%;
+            font-size: 25px;
+            margin-top: 6%;
+            font-weight: 400;
+            margin-left: 15%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="#" style="text-decoration:none;">
+                <img class="imglogo" src="/images/logovR0.png">
+            </a>
+            <span>inCarpool</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!--
+        <div class="novehicle">
+            <div class="alert alert-danger" role="alert">
+                <p>No vehicles available. <a href="">Please add a vehicle.</a></p>
+            </div>
+        </div>
+        -->
+
+        <form th:action="@{/offer/selectCar}" method="post">
+            <div class="container-form">
+                <label for="car" class="aa">Select Your Vehicle:</label>
+                <select name="car" id="car" required>
+                    <option value="" disabled selected>Select Vehicle</option>
+                    <!-- Boucle Thymeleaf pour afficher les voitures -->
+                    <th:block th:each="car : ${cars}">
+                        <option th:value="${car.id}" th:text="'Brand: ' + ${car.getBrand().getName()} + '  Model: ' + ${car.getModel()}"></option>
+                    </th:block>
+                </select>
+            </div>
+
+            <div class="boutons">
+                <div class="boutonR">
+                    <a href="javascript:void(0);" onclick="history.back()">
+                        <div class="backbtn">
+                            <i class="uil uil-navigator" style="transform: rotate(180deg)"></i>
+                            <span class="btntext">Back</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="bouton">
+                    <button type="submit" class="nextbtn" id="nextButton">
+                        <span class="btntext">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function submitForm(vehicle) {
+            document.getElementById('vehicle').value = vehicle;
+            document.forms[0].submit();
+        }
+    </script>
+</body>
+
+</html>

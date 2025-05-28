@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <link  rel="stylesheet" href="/css/styleUpgrade.css">
+	    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+	    <title>Registration</title>
+	</head>
+	
+	<body>
+	    <div class="container">
+	        <header> Upgrade </header>
+	        <form action="/upgrade/submit" method="post" enctype="multipart/form-data">
+	            <div class="form first">
+	                <div class="details personal">
+	                    <span class="title">Personal Details</span>
+	                    <div class="fields">
+	                    
+	                    <p style="margin: 10px 0 10px 0;">
+								Dear user,<br>
+
+
+As part of our verification process, we kindly ask you to upload both sides of your identification and driver's license documents. Please ensure that the files are in PDF format to facilitate efficient processing. Your cooperation in providing these documents is greatly appreciated.
+							</p>
+	                    
+	                        <div class="input-fields">
+	                            <label for="imgcin">Upload your identity card : </label>
+	                            <input type="file" id="imgcin" name="imgcin" >
+	                        </div>
+	                        
+	                        <div class="input-fields">
+	                            <label for="imglic">Upload your driving license : </label>
+	                            <input type="file" id="imglic" name="imglic">
+	                        </div>
+	
+	                    </div>
+
+						<!--afficher les erreurs-->
+						<div style="color: red;">
+							<p th:text="${filesError}"></p>
+						</div>
+						<div style="color: red;">
+							<p th:text="${pdfError}"></p>
+						</div>
+
+	                    <button type="submit">
+		                            <span class="btntext">Submit</span>
+		                            <i class="uil uil-navigator"></i>		                 
+	                    </button>
+	                    
+	                </div>
+	            </div>
+	        </form> 
+	    </div>
+	</body>
+	
+</html>

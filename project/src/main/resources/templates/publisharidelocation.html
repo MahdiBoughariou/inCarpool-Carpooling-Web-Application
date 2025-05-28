@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/styleride.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location</title>
+    <style>
+        .container-form select {
+            width: 60%;
+            height: 3.75em;
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            border-radius: 15px;
+            color: rgb(73, 69, 69);
+            border: 1px solid #aaa;
+            padding: 0 15px;
+            height: 42px;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">
+        <a href="#" style="text-decoration:none;">
+            <img class="imglogo" src="/images/logovR0.png">
+        </a>
+        <span>inCarpool</span>
+    </div>
+</nav>
+
+<section class="container">
+    <div class="form">
+        <form th:action="@{/offer/selectCities}" method="post">
+            <div class="container-form">
+                <label class="aa">Departure:</label>
+                <select name="departure" id="departure" required>
+                    <option value="" disabled selected>Select Departure</option>
+                    <!-- Boucle Thymeleaf pour afficher les villes -->
+                    <th:block th:each="city : ${cities}">
+                        <option th:value="${city.id}" th:text="${city.name}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="container-form">
+                <label>Destination:</label>
+                <select name="destination" id="destination" required>
+                    <option value="" disabled selected>Select Destination</option>
+                    <!-- Boucle Thymeleaf pour afficher les villes -->
+                    <th:block th:each="city : ${cities}">
+                        <option th:value="${city.id}" th:text="${city.name}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="boutons">
+                <div class="boutonR">
+                    <a href="/index/user">
+                        <div class="backbtn">
+                            <i class="uil uil-navigator" style="transform: rotate(180deg)"></i>
+                            <span class="btntext">Back</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="bouton">
+                    <button type="submit" class="nextbtn" id="nextButton">
+                        <span class="btntext">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+</body>
+</html>

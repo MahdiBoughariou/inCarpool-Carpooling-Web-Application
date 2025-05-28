@@ -1,0 +1,229 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap%27%27');
+
+:root {
+	--padding: 8%;
+}
+
+* {
+
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+html {
+	font-family: georgia, serif;
+	font-size: 16px;
+}
+
+/*nav*/
+nav {
+	width: 100%;
+	height: auto;
+	display: flex;
+	position: relative;
+	align-items: center;
+
+	margin-top: 10px;
+
+}
+
+.logo {
+	padding-left: 4%;
+	margin-bottom: 5%;
+}
+
+nav .imglogo {
+	width: 19%;
+}
+
+nav span {
+	position: relative;
+	bottom: 30px;
+	font-size: 22px;
+	font-weight: 700;
+	color: #25294A;
+}
+
+/*main*/
+/*section-profile*/
+.about {
+	width: 100%;
+}
+
+.you {
+	height: 60vh;
+	margin-top: 3.5em;
+}
+
+.container {
+	width: 100%;
+	min-height: 100%;
+}
+
+.container a:hover {
+	color: blue;
+}
+
+.container-personel {
+	width: 70%;
+	display: flex;
+	justify-content: center;
+
+}
+
+.container-personel h2 {
+	width: 30%;
+	height: 100%;
+	font-size: 50px;
+	font-weight: 600;
+	margin-right: 10%;
+}
+
+.container-personel span {
+	font-size: 50px;
+}
+
+.container-edit {
+	width: 70%;
+	min-height: 30%;
+	padding-left: 10%;
+	padding-top: 4%;
+}
+
+.container-edit a {
+	font-size: 25px;
+	text-decoration: none;
+	color: #25294A;
+}
+
+.container-edit .bio {
+	display: flex;
+	flex-direction: row;
+	padding-top: 10px;
+}
+
+.container-edit .bio span {
+	font-size: 35px;
+	padding-right: 15px;
+}
+
+.container-edit .bio p {
+	padding-top: 3px;
+}
+
+.container .separateur {
+	width: 70%;
+	height: 1px;
+	background-color: rgb(203, 196, 196);
+	margin-top: 2em;
+	margin-left: 10%;
+}
+
+.container-profile {
+	width: 70%;
+	margin-top: 2em;
+	margin-left: 10%;
+	display: flex;
+	flex-direction: column;
+}
+
+.container-profile h2 {
+	font-size: 30px;
+	font-weight: 500;
+}
+
+.container-profile a {
+	font-size: 25px;
+	text-decoration: none;
+	color: #25294A;
+	display: flex;
+	padding-top: 10px;
+}
+
+.container-profile span {
+	font-size: 35px;
+	padding-right: 15px;
+}
+
+.container-profile .confirme-Num {
+	display: flex;
+	padding-top: 10px;
+	color: #25294A;
+}
+
+.separateur-section {
+	width: 70%;
+	height: 5px;
+	background-color: rgb(229, 224, 224);
+	margin-top: 3em;
+	margin-left: 10%;
+}
+
+.vehicule {
+	margin-top: 3em;
+	padding-left: 10%;
+	margin-bottom: 30px;
+}
+
+.container-vehicule-Exist {
+	display: flex;
+	flex-direction: column;
+}
+
+.container-vehicule-Exist h2 {
+	font-size: 30px;
+	font-weight: 500;
+}
+
+.yourvehicule {
+	width: 70%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+
+.yourvehicule span {
+	font-size: 30px;
+	font-weight: 500;
+}
+
+.Car-Vehicule {
+	display: flex;
+	flex-direction: column;
+}
+
+.Car-Vehicule span h3 {
+	font-size: 25px;
+	font-weight: 500;
+}
+
+.Car-Vehicule span {
+	display: flex;
+	flex-direction: row;
+}
+
+.Car-Vehicule p {
+	font-weight: 700;
+	color: rgb(173, 175, 176);
+}
+
+.container-vehicule-add a {
+	font-size: 25px;
+	text-decoration: none;
+	color: #25294A;
+	display: flex;
+	padding-top: 10px;
+}
+
+.container-vehicule-add span {
+	font-size: 35px;
+	padding-right: 15px;
+}
+
+.container-vehicule-add p {
+	padding-top: 5px;
+}

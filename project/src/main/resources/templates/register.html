@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <link  rel="stylesheet" href="/css/styleR.css">
+	    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+	    <title>Registration</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		<script>
+			$(document).ready(function() {
+				// Lorsque l'utilisateur quitte le champ email
+				$('#email').on('blur', function() {
+					var email = $(this).val();  // Récupère la valeur du champ email
+
+					// Effectuer la requête AJAX pour vérifier la disponibilité de l'email
+					$.ajax({
+						type: 'GET',
+						url: '/registration/CheckEmailAvailability',  // URL du contrôleur pour vérifier la disponibilité
+						data: {'email': email},  // Envoie l'email à vérifier
+						success: function(response) {
+							// Afficher le message en fonction de la réponse
+							if (response === "Email available.") {
+								$('#email-message').text(response).css('color', 'green');  // Email disponible
+							} else {
+								$('#email-message').text(response).css('color', 'red');  // Email déjà utilisé
+							}
+						},
+						error: function() {
+							$('#email-message').text('Erreur de vérification').css('color', 'red');
+						}
+					});
+				});
+			});
+		</script>
+
+	</head>
+	
+	<body>
+	    <div class="container">
+	        <header> Registration</header>
+			<form th:action="@{/registration/step1}" method="post">
+			<div class="form first">
+	                <div class="details personal">
+	                    <span class="title">Personal Details</span>
+	                    <div class="fields">
+	                        <div class="input-fields">
+	                            <label>First Name</label>
+	                            <input type="text" id="firstname" name="firstname" placeholder="Enter your First Name">
+	                        </div>
+	                        <div class="input-fields">
+	                            <label>Last Name</label>
+	                            <input type="text" id="lastname" name="lastname" placeholder="Enter your Last Name">
+	                        </div>
+	                        <div class="input-fields">
+	                            <label>Identity Card Number</label>
+	                            <input type="text" id="cin" name="cin" placeholder="Enter your ID Card Number">
+								<div style="color: red;">
+									<p th:text="${cinError}"></p>
+								</div>
+	                        </div>
+
+	                        <div class="input-fields">
+	                            <label>E-mail</label>
+	                            <input  type="text" id="email" name="email" placeholder="Enter your Email">
+								<span id="email-message"></span> <!-- pour afficher les messages de disponibilité -->
+								<div style="color: red;">
+									<p th:text="${emailError}"></p>
+								</div>
+	                        </div>
+	                        <div class="input-fields">
+	                            <label>Birthday Date</label>
+	                            <input type="date" id="birthdate" name="birthdate" placeholder="Enter your Birthday Date">
+	                        </div>
+	                        <div class="input-fields">
+	                            <label>Mobile Number</label>
+	                            <input type="text" id="phone" name="phone" placeholder="Enter your mobile number">
+								<div style="color: red;">
+									<p th:text="${phoneError}"></p>
+								</div>
+	                        </div>
+
+							<!-- Affichage des erreurs -->
+							<div style="color: red;">
+								<p th:text="${nullError}"></p>
+							</div>
+
+	                    </div> 
+
+	                    <button type="submit">
+		                            <span class="btntext">Next</span>
+		                            <i class="uil uil-navigator"></i>
+	                    </button>
+	                    
+	                </div>
+	            </div>
+	        </form> 
+	    </div>
+	</body>
+	
+</html>

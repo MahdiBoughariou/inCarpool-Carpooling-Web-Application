@@ -1,0 +1,90 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ include file="security.jsp" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=Neo, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link href='styleR4.css' rel='stylesheet'>
+  <title>Number Of Places</title>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">
+      <a href="#" style="text-decoration:none;">
+        <img class="imglogo" src="photo/logovR0.png">
+      </a>
+      <span>inCarpool</span>
+    </div>
+  </nav>
+
+  <section>
+    <h1>So how many inCarpool passengers can you take?</h1>
+    <div class="form">
+    <form action="AddOfferServlet" method="post">
+    <input type="hidden" name="currentPage" value="addRideNbPlace">
+    <div class="container">
+      <span class="minus">
+        <span></span>
+      </span>
+      <!-- Replace the span with an input -->
+      <input type="number" name="nbplace" id="nbplace" class="num" value="1" min="1" max="10" style="  border: none;outline: none; text-align: center; line-height: 1;"readonly>
+      <span class="plus">
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+        <div class="boutons">
+      <div class="boutonR">
+        <a href="publisharidevehicule.jsp">
+          <div class="backbtn ">
+            <i class="uil uil-navigator" style="transform: rotate(180deg)"></i>
+            <span class="btntext">Back</span>
+          </div>
+        </a>
+      </div>
+      <div class="bouton">
+	  <button type="submit" class="nextbtn" id="nextButton"> 
+                        <span class="btntext">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+      </div>
+
+    </div>
+	</form>
+	</div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const numDisplay = document.querySelector('.num');
+        const plusBtn = document.querySelector('.plus');
+        const minusBtn = document.querySelector('.minus');
+        
+        plusBtn.addEventListener('click', function () {
+          let value = parseInt(numDisplay.value);
+          if (value < 10) {
+            value++;
+            numDisplay.value = value;
+          }
+        });
+
+        minusBtn.addEventListener('click', function () {
+          let value = parseInt(numDisplay.value);
+          if (value > 1) {
+            value--;
+            numDisplay.value = value;
+          }
+        });
+      });
+    </script>
+
+
+  </section>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/styleride.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location</title>
+    <style>
+    .container-form select {
+    width: 60%;
+    height: 3.75em;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    border-radius: 15px;
+    color: rgb(73, 69, 69);
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+    
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">
+        <a href="#" style="text-decoration:none;">
+            <img class="imglogo" src="/images/logovR0.png">
+        </a>
+        <span>inCarpool</span>
+    </div>
+</nav>
+
+<section class="container">
+    <div class="form">
+        <form action="AddOfferServlet" method="post">
+            <input type="hidden" name="currentPage" value="addRideLocation">
+            <div class="container-form">
+                <label class="aa">Departure:</label>
+                <select name="departure" id="departure" required>
+                    <option value="<%= city.getId() %>"></option>
+
+                </select>
+            </div>
+            <div class="container-form">
+                <label>Destination:</label>
+                <select name="destination" id="destination" required>
+                </select>
+            </div>
+            <div class="boutons">
+                <div class="boutonR">
+                    <a href="user.jsp">
+                        <div class="backbtn ">
+                            <i class="uil uil-navigator" style="transform: rotate(180deg )" ></i>
+                            <span class="btntext">Back</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="bouton">
+	  <button type="submit" class="nextbtn" id="nextButton"> 
+                        <span class="btntext">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div> 
+            </div>
+            
+        </form>    
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the default value of departure
+    var departureId = document.getElementById('departure').value;
+    
+    // Populate the destination select element
+    populateDestination(departureId);
+});
+
+document.getElementById('departure').addEventListener('change', function() {
+    var departureId = this.value;
+    populateDestination(departureId);
+});
+
+function populateDestination(departureId) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'getDestinationCities.jsp?departureId=' + departureId, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var cities = JSON.parse(xhr.responseText);
+            populateDestinationSelect(cities);
+        }
+    };
+    xhr.send();
+}
+
+function populateDestinationSelect(cities) {
+    var destinationSelect = document.getElementById('destination');
+    destinationSelect.innerHTML = ''; // Clear existing options
+    cities.forEach(function(city) {
+        var option = document.createElement('option');
+        option.value = city.id;
+        option.textContent = city.name;
+        destinationSelect.appendChild(option);
+    });
+}
+
+</script>
+
+
+
+</body>
+</html>
