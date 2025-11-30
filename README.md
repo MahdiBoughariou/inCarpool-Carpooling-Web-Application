@@ -105,7 +105,7 @@ Pour visualiser le rendu visuel de l'application, veuillez consulter le fichier 
 
 ## 📞 Contact
 
-* **Auteur :** Mahdi Boughario
+* **Auteur :** Mahdi Boughariou
 * **GitHub :** [MahdiBoughariou](https://github.com/MahdiBoughariou)
 
 ---
