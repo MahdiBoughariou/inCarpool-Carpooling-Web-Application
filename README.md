@@ -10,11 +10,12 @@ Ce projet a été réalisé par **Mahdi Boughariou** (2ème année Ingénierie e
 
 ## 📂 Structure du Dépôt
 
-Ce dépôt contient trois dossiers principaux représentant l'évolution et les ressources du projet :
+Ce dépôt contient les codes sources, les données et la documentation officielle du projet :
 
 * **`projet`** (Dossier Principal) : Contient le code source de l'application finale développée avec **Spring Boot**. C'est la version recommandée pour l'exécution et le déploiement.
-* **`ancien_avec_servlets`** : Contient une version antérieure de l'application développée en utilisant uniquement les **Servlets Java / JEE**. Ce dossier est conservé à des fins d'archivage et de comparaison architecturale.
-* **`projet_co_data`** : Contient les ressources de données, notamment les fichiers `.csv` et les scripts `.sql` nécessaires pour peupler la base de données ou pour l'analyse de données.
+* **`ancien_avec_servlets`** : Contient une version antérieure de l'application développée avec des **Servlets Java / JEE**. Ce dossier est conservé à des fins d'archivage.
+* **`projet_co_data`** : Contient les ressources de données, notamment les fichiers `.csv` et les scripts `.sql` nécessaires pour peupler la base de données.
+* **`Rapport.pdf`** : Le rapport complet du projet. Il contient la documentation technique, les diagrammes de conception (UML) ainsi que **l'ensemble des captures d'écran** des interfaces de l'application.
 
 ---
 
@@ -91,6 +92,14 @@ Le projet (dossier `projet`) repose sur les technologies suivantes :
 Le schéma relationnel comprend les entités suivantes : `User`, `Admin`, `Car`, `Brand`, `Offer`, `Ride`, `City`.
 
 Si vous avez besoin d'importer des données initiales, vous pouvez utiliser les fichiers présents dans le dossier **`projet_co_data`** via l'interface phpMyAdmin une fois les conteneurs lancés.
+
+---
+
+## 📸 Aperçu et Documentation
+
+Pour visualiser le rendu visuel de l'application, veuillez consulter le fichier **`Rapport.pdf`** situé à la racine de ce dépôt. Il inclut :
+* Les diagrammes de classes et de conception.
+* Les captures d'écran des interfaces **Admin** (Dashboard, Gestion des requêtes) et **Utilisateur** (Login, Recherche, Ajout d'offres).
 
 ---
 
